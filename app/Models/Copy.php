@@ -10,10 +10,12 @@ class Copy extends Model
     use HasFactory;
     //nem id nevet adtuk a primary key-nek, ezért beállítjuk
     protected  $primaryKey = 'copy_id';
-
+    public $timestamps = false;
+    
     protected $fillable = [
-        'user_id',
         'book_id',
+        "hardcovered",
+        "publication",
         'status'
     ];
 }

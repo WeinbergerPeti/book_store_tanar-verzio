@@ -16,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () 
+{
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function () 
+{
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth.basic'])->group(function () {
+Route::middleware(['auth.basic'])->group(function () 
+{
     Route::apiResource('/api/copies', CopyController::class);
     Route::apiResource('/api/books', BookController::class);
     Route::apiResource('/api/users', UserController::class);
@@ -33,6 +36,11 @@ Route::middleware(['auth.basic'])->group(function () {
     Route::get('/copy/new', [CopyController::class, 'newView']);
     Route::get('/copy/edit/{id}', [CopyController::class, 'editView']);
     Route::get('/copy/list', [CopyController::class, 'listView']);
+});
+
+Route::middleware(["admin"])->group(function()
+{
+    Route::apiResource("/users", UserController::class);
 });
 
 require __DIR__.'/auth.php';
