@@ -35,4 +35,10 @@ class BookController extends Controller
         $Book->author = $request->author;
         $Book->title = $request->title;
     }
+
+    public function copies_id($id)
+    {
+        $copies = Book::with("book_copy")->where("book_id", $id)->get();
+        return $copies;
+    }
 }

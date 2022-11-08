@@ -17,4 +17,9 @@ class Book extends Model
         'author',
         'title'
     ];
+
+    public function book_copy()
+    {
+        return $this->hasMany(Copy::class, /*ez a tábla ahova összekapcsolom*/'book_id', /*ez a tábla az ahol először létrehoztam az id-t*/'book_id');
+    }
 }

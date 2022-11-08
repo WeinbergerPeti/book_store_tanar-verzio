@@ -54,5 +54,6 @@ Route::middleware(["admin"])->group(function()
 // Route::apiResource('/api/books', BookController::class);
 // Route::apiResource('/api/users', UserController::class);
 Route::patch("/api/users/password/{id}", [UserController::class, "updatePassword"]);
+Route::get("/api/book_copies/{id}", [BookController::class, "copies_id"]);
 
 require __DIR__.'/auth.php';
